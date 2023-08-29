@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoCalc", "GeoCalc\GeoCalc.csproj", "{195125C4-AE8A-4572-A3CF-1A844E1A802F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{195125C4-AE8A-4572-A3CF-1A844E1A802F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{195125C4-AE8A-4572-A3CF-1A844E1A802F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{195125C4-AE8A-4572-A3CF-1A844E1A802F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{195125C4-AE8A-4572-A3CF-1A844E1A802F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {200364C7-98E2-4003-83CA-8371DE916CD4}
+	EndGlobalSection
+EndGlobal
