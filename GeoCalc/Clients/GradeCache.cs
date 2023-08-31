@@ -1,9 +1,9 @@
-﻿using BrainDump.Data.Entities;
-using BrainDump.Interfaces;
+﻿using GeoCalc.Data.Entities;
+using GeoCalc.Interfaces;
 using Microsoft.AspNetCore.DataProtection.KeyManagement.Internal;
 using System.Diagnostics;
 
-namespace BrainDump.Clients
+namespace GeoCalc.Clients
 {
     public class GradeCache : ICache<WholeGrade>
     {

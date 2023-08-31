@@ -1,6 +1,6 @@
-﻿using BrainDump.Interfaces;
+﻿using GeoCalc.Interfaces;
 
-namespace BrainDump.Clients;
+namespace GeoCalc.Clients;
 
 public class GradeClient : IGradeClient
 {

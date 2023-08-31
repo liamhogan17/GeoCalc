@@ -1,7 +1,7 @@
-﻿using BrainDump.Data.Entities;
-using BrainDump.Interfaces;
+﻿using GeoCalc.Data.Entities;
+using GeoCalc.Interfaces;
 
-namespace BrainDump.Clients;
+namespace GeoCalc.Clients;
 
 public class ClassCache : ICache<Class>
 {

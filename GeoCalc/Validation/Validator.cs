@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BrainDump.Validation;
+namespace GeoCalc.Validation;
 
 public class Validator<T> : IValidatableObject
 {

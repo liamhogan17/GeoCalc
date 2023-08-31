@@ -1,8 +1,9 @@
-using BrainDump.Clients;
-using BrainDump.Data.DBContext;
-using BrainDump.Data.Entities;
-using BrainDump.Interfaces;
+using GeoCalc.Clients;
+using GeoCalc.Data.DBContext;
+using GeoCalc.Data.Entities;
+using GeoCalc.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Swashbuckle;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<BrainDumpContext>(options =>
+builder.Services.AddDbContext<GeoCalcContext>(options =>
 {
     var connectionString = builder.Configuration.GetConnectionString("Database");
     options.UseSqlServer(connectionString);
@@ -21,7 +22,9 @@ builder.Services.AddSingleton<IGradeClient, GradeClient>();
 builder.Services.AddSingleton<ICache<Class>, ClassCache>();
 builder.Services.AddSingleton<ICache<WholeGrade>, GradeCache>();
 
+builder.Services.AddSwaggerGen();
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -30,15 +33,23 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseEndpoints(endpoint => endpoint.MapControllers());
+//app.MapControllerRoute(
+//    name: "default",
+//    pattern: "{controller}/{action=Index}/{id?}");
 
+app.MapFallbackToFile("index.html");
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller}/{action=Index}/{id?}");
+app.UseSwagger();
+app.UseSwaggerUI();
 
-app.MapFallbackToFile("index.html"); ;
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+    c.RoutePrefix = "";
+});
 
 app.Run();

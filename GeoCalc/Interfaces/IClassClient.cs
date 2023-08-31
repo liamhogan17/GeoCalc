@@ -1,7 +1,7 @@
 ﻿
-using BrainDump.Data.Entities;
+using GeoCalc.Data.Entities;
 
-namespace BrainDump.Interfaces;
+namespace GeoCalc.Interfaces;
 
 public interface IClassClient
 {

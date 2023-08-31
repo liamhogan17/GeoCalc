@@ -1,10 +1,10 @@
-﻿using BrainDump.Data.Entities;
-using BrainDump.Interfaces;
-using BrainDump.Validation;
+﻿using GeoCalc.Data.Entities;
+using GeoCalc.Interfaces;
+using GeoCalc.Validation;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 
-namespace BrainDump.Clients
+namespace GeoCalc.Clients
 {
     public class GradeFactory
     {
@@ -21,7 +21,7 @@ namespace BrainDump.Clients
 
         public WholeGrade? GiveMeGrade(string grade)
         {
-            var gradeObject = new WholeGrade { Grade = grade, Id = new Guid() };
+            var gradeObject = new WholeGrade { Grade = grade };
             _cache.Add(gradeObject);
             return gradeObject;
         }

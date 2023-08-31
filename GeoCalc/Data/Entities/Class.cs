@@ -1,24 +1,17 @@
-﻿using BrainDump.Clients;
-using BrainDump.Interfaces;
+﻿using GeoCalc.Clients;
+using GeoCalc.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BrainDump.Data.Entities;
+namespace GeoCalc.Data.Entities;
 
 [Table("Class")]
 public class Class
 {
     [Key]
-    [Required]
-    public Guid Id { init; get; }
-    [Required]
-    public string Name { init; get; }
-    [Required]
-    public string Subject { init; get; }
-    [Required]
-    public int Grade { init; get; }
+    public int Id { init; get; }
+    [Required] public string Name { init; get; } = string.Empty;
+    [Required] public string Subject { init; get; } = string.Empty;
+    [Required] public string Grade { init; get; } = string.Empty;
     public string? Description { get; set; }
-
-    private Statistics? Marks;
-    private IFileClient? Export;
 }

@@ -1,4 +1,4 @@
-﻿namespace BrainDump.Clients
+﻿namespace GeoCalc.Clients
 {
     public class Statistics
     {

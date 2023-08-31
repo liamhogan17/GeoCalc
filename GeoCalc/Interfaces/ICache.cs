@@ -1,5 +1,5 @@
 ﻿
-namespace BrainDump.Interfaces;
+namespace GeoCalc.Interfaces;
 
 public interface ICache<T>
 {
