@@ -1,12 +1,11 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace GeoCalc.Migrations
 {
     /// <inheritdoc />
-    public partial class initialize_db : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,7 +14,8 @@ namespace GeoCalc.Migrations
                 name: "Grade",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Grade = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
@@ -27,7 +27,8 @@ namespace GeoCalc.Migrations
                 name: "User",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
@@ -39,13 +40,14 @@ namespace GeoCalc.Migrations
                 name: "Class",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Subject = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Grade = table.Column<int>(type: "int", nullable: false),
+                    Grade = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    WholeGradeId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    UserId = table.Column<int>(type: "int", nullable: true),
+                    WholeGradeId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -65,9 +67,7 @@ namespace GeoCalc.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Class_Id_Name_Subject_Grade_Description",
                 table: "Class",
-                columns: new[] { "Id", "Name", "Subject", "Grade", "Description" },
-                unique: true,
-                filter: "[Description] IS NOT NULL");
+                columns: new[] { "Id", "Name", "Subject", "Grade", "Description" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Class_UserId",
@@ -82,14 +82,12 @@ namespace GeoCalc.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Grade_Id_Grade",
                 table: "Grade",
-                columns: new[] { "Id", "Grade" },
-                unique: true);
+                columns: new[] { "Id", "Grade" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_User_Id_Name",
                 table: "User",
-                columns: new[] { "Id", "Name" },
-                unique: true);
+                columns: new[] { "Id", "Name" });
         }
 
         /// <inheritdoc />

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GeoCalc.Migrations
 {
     [DbContext(typeof(GeoCalcContext))]
-    [Migration("20230829222401_initialize_db")]
-    partial class initialize_db
+    [Migration("20230901014138_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,15 +27,18 @@ namespace GeoCalc.Migrations
 
             modelBuilder.Entity("GeoCalc.Data.Entities.Class", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("Grade")
-                        .HasColumnType("int");
+                    b.Property<string>("Grade")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -45,11 +48,11 @@ namespace GeoCalc.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
 
-                    b.Property<Guid?>("WholeGradeId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int?>("WholeGradeId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -57,18 +60,18 @@ namespace GeoCalc.Migrations
 
                     b.HasIndex("WholeGradeId");
 
-                    b.HasIndex("Id", "Name", "Subject", "Grade", "Description")
-                        .IsUnique()
-                        .HasFilter("[Description] IS NOT NULL");
+                    b.HasIndex("Id", "Name", "Subject", "Grade", "Description");
 
                     b.ToTable("Class");
                 });
 
             modelBuilder.Entity("GeoCalc.Data.Entities.User", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -76,17 +79,18 @@ namespace GeoCalc.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Id", "Name")
-                        .IsUnique();
+                    b.HasIndex("Id", "Name");
 
                     b.ToTable("User");
                 });
 
             modelBuilder.Entity("GeoCalc.Data.Entities.WholeGrade", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Grade")
                         .IsRequired()
@@ -94,8 +98,7 @@ namespace GeoCalc.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Id", "Grade")
-                        .IsUnique();
+                    b.HasIndex("Id", "Grade");
 
                     b.ToTable("Grade");
                 });

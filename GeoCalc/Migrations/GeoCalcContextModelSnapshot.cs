@@ -57,9 +57,7 @@ namespace GeoCalc.Migrations
 
                     b.HasIndex("WholeGradeId");
 
-                    b.HasIndex("Id", "Name", "Subject", "Grade", "Description")
-                        .IsUnique()
-                        .HasFilter("[Description] IS NOT NULL");
+                    b.HasIndex("Id", "Name", "Subject", "Grade", "Description");
 
                     b.ToTable("Class");
                 });
@@ -78,8 +76,7 @@ namespace GeoCalc.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Id", "Name")
-                        .IsUnique();
+                    b.HasIndex("Id", "Name");
 
                     b.ToTable("User");
                 });
@@ -98,8 +95,7 @@ namespace GeoCalc.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Id", "Grade")
-                        .IsUnique();
+                    b.HasIndex("Id", "Grade");
 
                     b.ToTable("Grade");
                 });

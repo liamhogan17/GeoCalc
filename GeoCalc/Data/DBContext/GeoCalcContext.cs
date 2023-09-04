@@ -24,8 +24,8 @@ public class GeoCalcContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Class>().HasIndex(c => new { c.Id, c.Name, c.Subject, c.Grade, c.Description }).IsUnique();
-        modelBuilder.Entity<WholeGrade>().HasIndex(c => new { c.Id, c.Grade }).IsUnique();
-        modelBuilder.Entity<User>().HasIndex(c => new { c.Id, c.Name}).IsUnique();
+        modelBuilder.Entity<Class>().HasIndex(c => new { c.Id, c.Name, c.Subject, c.Grade, c.Description });
+        modelBuilder.Entity<WholeGrade>().HasIndex(c => new { c.Id, c.Grade });
+        modelBuilder.Entity<User>().HasIndex(c => new { c.Id, c.Name });
     }
 }
